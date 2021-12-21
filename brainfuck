@@ -1,0 +1,32 @@
+#!/usr/bin/env bash
+
+# A couple of variables for command line styles.
+RED=`tput setaf 1`
+GREEN=`tput setaf 2`
+RESET=`tput sgr0`
+
+# Check there is a command for Brainfuck... we need one.
+if [ "$1" == "--help" ]; then
+    echo "Help..."
+
+# To interpret a script with Node, we'll pass `--run`.
+elif [ "$1" == "--run" ]; then
+    # Obviously, we need a file to interpret, so we'll test that has also been
+    # passed as an argument.
+    #
+    # If there is no file passed.
+    if [ -z $2 ]; then
+        echo -e "${RED}\nThe Brainfuck interpreter is expecting a file to interpret.\n\nPass it as an argument here...\n\n'brainfuck --run YOUR_FILE.bf\n${RESET}"
+        exit 1
+
+    # If it has, run the interpreter.
+    else
+        echo -e "${GREEN}\nRunning...\n${RESET}"
+        node "./index" $2
+    fi
+
+# If there is no additional arguments, exit with an error.
+else
+    echo -e "${RED}\nOops, please specify what you want Brainfuck to do.\n\nType 'brainfuck --help' for a lists of commands.\n${RESET}"
+    exit 1
+fi
