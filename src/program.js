@@ -8,10 +8,26 @@ class Program {
      */
     constructor()
     {
-        const Output = require('./output');
+        const Output = require('./lang/output');
         this.output = new Output;
 
-        this.source = this.getSourceFromFile();
+        const Lexer = require('./lexer');
+        /**
+         * Call the lexer.
+         * @type {Lexer}
+         * @param {string} - raw string source code to be lexed.
+         */
+        this.lexer = new Lexer(this.getRawSourceFromFile());
+
+        const Parser = require('./parser');
+        /**
+         * Call the parser.
+         * @type {Parser}
+         * @param {array} - tokenised source from the lexer.
+         */
+        this.parser = new Parser(this.lexer.source);
+        this.ast = this.parser.ast;
+
         this.pointer = 0;
     }
 
@@ -19,7 +35,7 @@ class Program {
      * Method to read a Brainfuck source file and return it back to the interpreter.
      * @return {string} - Brainfuck source.
      */
-    getSourceFromFile()
+    getRawSourceFromFile()
     {
         // Check there is a input file as interpreter requires one passed to it as
         // its first CL arugment.
@@ -46,7 +62,6 @@ class Program {
         return require('fs')
                     .readFileSync(process.argv[2])      // Get file based on console argument 2.
                     .toString()                         // Convert it to a string.
-                    .replace(/[^><+-\[\]{}.,~=]/g, '')  // Remove all non-syntax characters and whitespace.
         ;
     }
 
