@@ -5,12 +5,14 @@
 class Lexer {
     /**
      * Constructor.
+     * @param {string} rawSource - this is the source file contents as a string.
      * @return {void}
      */
     constructor(rawSource)
     {
         this.rawSource = rawSource;
 
+        // Accepted tokens...
         this.tokens = [
             {regex: /\>/, token: 'RIGHT'},
             {regex: /\</, token: 'LEFT'},
@@ -25,8 +27,10 @@ class Lexer {
             {regex: /\~/, token: 'DUMP'},
         ];
 
+        // Split type, allows for syntax changes.
         this.splitType = ''; // '' = char, ' ' = word.
 
+        // Generate a lexed source...
         this.source = this.lex();
     }
 

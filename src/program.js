@@ -27,8 +27,6 @@ class Program {
          */
         this.parser = new Parser(this.lexer.source);
         this.ast = this.parser.ast;
-
-        this.pointer = 0;
     }
 
     /**
@@ -63,25 +61,6 @@ class Program {
                     .readFileSync(process.argv[2])      // Get file based on console argument 2.
                     .toString()                         // Convert it to a string.
         ;
-    }
-
-    /**
-     * Method to set the instruction pointer to a passed number.
-     * @param {number} position - pointer position to set the pointer to.
-     * @return {void}
-     */
-    setPointer(position)
-    {
-        this.pointer = position;
-    }
-
-    /**
-     * Method to increment the pointer by one.
-     * @return {void}
-     */
-    incrementPointer()
-    {
-        this.pointer++;
     }
 }
 
