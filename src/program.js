@@ -6,10 +6,9 @@ class Program {
      * Constructor.
      * @return {void}
      */
-    constructor()
+    constructor(source)
     {
-        const Output = require('./lang/output');
-        this.output = new Output;
+        this.rawSource = (source == null) ? this.getRawSourceFromFile() : source;
 
         const Lexer = require('./lexer');
         /**
@@ -17,7 +16,7 @@ class Program {
          * @type {Lexer}
          * @param {string} - raw string source code to be lexed.
          */
-        this.lexer = new Lexer(this.getRawSourceFromFile());
+        this.lexer = new Lexer(this.rawSource);
 
         const Parser = require('./parser');
         /**
@@ -26,6 +25,7 @@ class Program {
          * @param {array} - tokenised source from the lexer.
          */
         this.parser = new Parser(this.lexer.source);
+
         this.ast = this.parser.ast;
     }
 
@@ -39,7 +39,7 @@ class Program {
         // its first CL arugment.
         if (process.argv[2] === undefined) {
             // Error and exit if there's not.
-            this.output.error(`No input source file. Interpreter expects a ".bf" or ".b" source file passed as the first argument.\n\n"node brainfuck INPUT_SOURCE_FILE.bf"`);
+            throw `No input source file. Interpreter expects a ".bf" or ".b" source file passed as the first argument.\n\n"node brainfuck INPUT_SOURCE_FILE.bf"`;
             process.exit();
         }
 
@@ -51,7 +51,7 @@ class Program {
         // Then we'll test for the correct extension.
         if (extension != '.bf' && extension != '.b') {
             // Error and exit if it's not.
-            this.output.error(`Interpreter expects a ".bf" or ".b" source file. "${extension}" file given.`);
+            throw `Interpreter expects a ".bf" or ".b" source file. "${extension}" file given.`;
             process.exit();
         }
 

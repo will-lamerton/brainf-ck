@@ -2,42 +2,31 @@
  * Class to interpret the passed Brainfuck source file.
  * @return {void}
  */
-class Brainfuck {
-    /*
+class Interpreter {
+    /**
      * Constructor.
+     * @param {object} ast - Abstract Syntax Tree to run.
+     * @param {Output} output - output class.
      * @return {void}
      */
-    constructor()
+    constructor(ast, output)
     {
         /**
          * Import Brainfuck interpreter libraries.
          *
          * These themselves will also import other core libraries.
          *
-         * @type {Program} - this class fetches the program file, sends it
-         * through the lexer & parser to generate an AST for us to run here.
-         *
          * @type {Memory} - Handles the creation and manipulation of the program
          * memory allocated to Brainfuck.
          *
-         * @type {Output} - Handles interpreter output.
-         *
          */
-        const Program = require('./program');
-        this.program = new Program;
-
         const Memory = require('./lang/memory');
         this.memory = new Memory;
 
-        const Output = require('./lang/output');
-        this.output = new Output;
+        this.output = output;
 
         // Run the program.
-        this.run(this.program.ast);
-
-        // Once we're done executing instructions, we'll take the output stack and
-        // create a console output for it.
-        this.output.compileOutputStack();
+        this.run(ast);
     }
 
     /**
@@ -153,4 +142,4 @@ class Brainfuck {
     }
 }
 
-module.exports = Brainfuck;
+module.exports = Interpreter;

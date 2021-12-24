@@ -10,6 +10,7 @@ However, one advantage of it's minimalism is that Brainf-ck is a great place to 
 
 Despite being small, this Brainf-ck interpreter has been written properly, lexing a source input, then parsing it to create an abstract syntax tree before the interpreter runs the code.
 
+You can run the interpreter in the command line via Node and a shell script or, you can import it as a library and use the API to build a Brainf-ck interpreter into your website.
 
 *Please note: I'm still firming up these docs and the package itself.*
 
