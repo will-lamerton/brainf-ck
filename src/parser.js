@@ -30,6 +30,17 @@ class Parser {
         // AST.
         let astString = '[{ "commands": [';
 
+        // These are tracker variables for the parser. Every opening condition
+        // needs a closing one too, so, we'll keep track. Every opening conditional
+        // we'll push a new entry to the array with a character number. Every
+        // closing conditional we'll pop from the array.
+        //
+        // If the length of the arrays are not equal to zero then we're missing
+        // a closing conditional so, we'll throw an error with the character
+        // number.
+        let openWhileConditionals = [];
+        let openIfConditionals = [];
+
         // Now we have that, we'll loop through our Lexed source keeping track
         // of the current token and its position with an "iteration" variable.
         this.lexedSource.forEach((token, iteration) => {
@@ -40,11 +51,19 @@ class Parser {
             // arrays which we can traverse later.
             switch (token) {
                 case 'WHILE':
+                    openWhileConditionals.push(iteration);
+                    astString += '[';
+                    break;
                 case 'IF':
+                    openIfConditionals.push(iteration);
                     astString += '[';
                     break;
                 case 'ENDWHILE':
+                    openWhileConditionals.pop();
+                    astString += ']';
+                    break;
                 case 'ENDIF':
+                    openIfConditionals.pop();
                     astString += ']';
                     break;
             }
@@ -68,6 +87,15 @@ class Parser {
         // At this point, our tokens have all been accounted for, so we'll add
         // our closing JSON.
         astString += '] }]';
+
+        // The source has a missing closing conditional, so, we'll throw an
+        // error.
+        if (openIfConditionals.length != 0) {
+            throw `Missing closing \`if\` conditional on character: ${openIfConditionals[0]}.`;
+        }
+        if (openWhileConditionals.length != 0) {
+            throw `Missing closing \`while\` conditional on character: ${openWhileConditionals[0]}.`;
+        }
 
         // And finish by returning the parsed AST by removing the JSON.
         return JSON.parse(astString)[0].commands;

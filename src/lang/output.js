@@ -32,13 +32,17 @@ class Output {
     }
 
     /**
-     * Method to compile the output stack into a single string.
-     * @param {array} outputStack - output stack.
+     * Method to compile the output stack into a single string and output it to
+     * a passed location.
+     * @param {string|undefined} outputTo - location to put program output.
      * @return {void}
      */
-    compileOutputStack()
+    compileOutputStack(outputTo)
     {
-        console.log(this.stack.join(''),'\n');
+        (outputTo === undefined) ?
+            console.log(this.stack.join(''),'\n') :
+            document.querySelector(`#${outputTo}`).innerHTML(this.stack.join(''))
+        ;
     }
 }
 

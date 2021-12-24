@@ -22,8 +22,7 @@ You can run the interpreter in the command line via Node and a shell script or, 
 - Contributing
 
 **_Still to complete in package:_**
-- More error handling.
-- More output methods based on running environment.
+- More output methods based on running environment. Done but needs test.
 - Dictionary so you can choose the keywords for the language.
 
 

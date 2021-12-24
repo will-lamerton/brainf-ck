@@ -1,5 +1,5 @@
 /**
- * Small initialiser class - takes the source and, lexes, parses it and then
+ * Small initialiser class - takes the source and lexes, parses it and then
  * passes it to the interpreter in the form of an AST.
  */
 class Brainfuck {
@@ -17,9 +17,8 @@ class Brainfuck {
         // Options...
         this.options = options;
 
-        // Set the source equal to `null` which means the interpreter until we
-        // know the source.
-        this.source = null;
+        // Set the source equal to `undefined` until we know the source.
+        this.source = undefined;
 
         // Check the options, parse program and run interpreter, if we encounter
         // problems, we'll catch the error
@@ -35,8 +34,8 @@ class Brainfuck {
             new Interpreter(this.program.ast, output);
 
             // Once we're done executing instructions, we'll take the output stack and
-            // create a console output for it.
-            output.compileOutputStack();
+            // create an output to either the console or HTML element passed.
+            output.compileOutputStack((this.options.output === undefined) ? undefined : this.options.output);
 
         } catch (e) {
             output.error(e);
