@@ -12,8 +12,6 @@ class Lexer {
     {
         this.rawSource = rawSource;
 
-        const config = require('./lang/brainfuck.config');
-        config.tokens();
         // Accepted tokens...
         this.tokens = [
             {regex: /\>/, token: 'RIGHT'},
