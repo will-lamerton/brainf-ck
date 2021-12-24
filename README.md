@@ -21,5 +21,11 @@ You can run the interpreter in the command line via Node and a shell script or, 
 - Project roadmap
 - Contributing
 
+**_Still to complete in package:_**
+- More error handling.
+- More output methods based on running environment.
+- Dictionary so you can choose the keywords for the language.
+
+
 SETUP...
 chmod u+x brainfuck
