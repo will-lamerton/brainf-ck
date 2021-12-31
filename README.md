@@ -57,8 +57,8 @@ Again, the interpreter class takes an object as a parameter to define how the li
 | Parameter | Type | Required | Explanation                                                      |
 |-----------|------------|----------|------------------------------------------------------------------|
 | ```viaNode```   | Bool | Yes | Used to tell the interpreter whether or not to run via Node. |
-| ```source```    | string | Yes* | A Brainf-ck program to interpret. |
-| ```output```    | string | No | If you want to output the program straight to a HTML DOM element, you can pass it's ID here. |
+| ```source```    | String | Yes* | A Brainf-ck program to interpret. |
+| ```output```    | String | No | If you want to output the program straight to a HTML DOM element, you can pass it's ID here. |
 
 *```source``` only required if you're running in browser as the interpreter has no native, easy way to read files. You can build this functionality in yourself should want it and pass the string output.
 
@@ -73,7 +73,3 @@ Again, the interpreter class takes an object as a parameter to define how the li
 
 **_Still to complete in package:_**
 - Dictionary so you can choose the keywords for the language.
-
-
-SETUP...
-chmod u+x brainfuck
