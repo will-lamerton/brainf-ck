@@ -19,7 +19,6 @@ class Output {
     error(message)
     {
         console.error('\x1b[31m%s\x1b[0m', message, '\n');
-        process.exit();
     }
 
     /**
@@ -41,7 +40,7 @@ class Output {
     {
         (outputTo === undefined) ?
             console.log(this.stack.join(''),'\n') :
-            document.querySelector(`#${outputTo}`).innerHTML(this.stack.join(''))
+            document.getElementById(outputTo).innerHTML = this.stack.join('')
         ;
     }
 }

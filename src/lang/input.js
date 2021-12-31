@@ -1,6 +1,6 @@
-// We'll need this module for input reading.
-const rl = require('readline-sync');
-
+/**
+ * Class to read input...
+ */
 class Input {
     /**
      * Constructor
@@ -8,7 +8,11 @@ class Input {
      */
     constructor()
     {
-        this.rl = require('readline-sync');
+        try {
+            this.rl = require('readline-sync');
+        } catch (e) {
+            this.rl = undefined;
+        }
     }
 
     /**
@@ -17,8 +21,11 @@ class Input {
      */
     getChar()
     {
-        // Get input from the standard input.
-        const input = this.rl.question('> ');
+        // Get input from the standard input for the running environment.
+        const input = (this.rl === undefined) ?
+            this.rl.question('> ') :
+            prompt('Input...')
+        ;
 
         // Convert the first character entered to ASCII. If it's valid,
         // write the ASCII code to memory, if not, just make it 0.
