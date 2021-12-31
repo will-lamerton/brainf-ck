@@ -1,6 +1,6 @@
 let mix = require('laravel-mix');
 mix
-    .js('brainfuck.js','brainfuck.browser.js')
+    .js('brainfuck.js','browser.js')
     .webpackConfig({
         resolve: {
             fallback: {

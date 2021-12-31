@@ -7,7 +7,7 @@ RESET=`tput sgr0`
 
 # Check there is a command for Brainfuck... we need one.
 if [ "$1" == "--help" ]; then
-    echo "Help..."
+    echo "Help coming soon..."
 
 # To interpret a script with Node, we'll pass `--run`.
 elif [ "$1" == "--run" ]; then

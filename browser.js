@@ -6225,7 +6225,7 @@ var Program = /*#__PURE__*/function () {
       // its first CL arugment.
       if (process.argv[2] === undefined) {
         // Error and exit if there's not.
-        throw "No input source file. Interpreter expects a \".bf\" or \".b\" source file passed as the first argument.\n\n\"node brainfuck INPUT_SOURCE_FILE.bf\"";
+        throw "No input source file. Interpreter expects a \".bf\" or \".b\" source file passed as the first argument.";
         process.exit();
       } // We also need to make sure we're inporting a `.bf` or `.b` file.
       //
