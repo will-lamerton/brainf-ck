@@ -62,11 +62,37 @@ Again, the interpreter class takes an object as a parameter to define how the li
 
 *```source``` only required if you're running in browser as the interpreter has no native, easy way to read files. You can build this functionality in yourself should want it and pass the string output.
 
+## The Language
+As previously mentioned, Brainf-ck is an incredibly lightweight language. The original implementation and compiler for the The language consisted of just eight command, all other characters are ignored as comments. The commands are generally run in sequence with the program terminating when the instruction pointer moves past the last command.
+
+The Brainf-ck language uses a simple machine model consisting of the instruction pointer, as well as a an array of at least 30,000 byte cells defaulting to zero and a movable data pointer to indicate which memory address to access.
+
+**The commands are as follows:**
+
+| Instruction | Description |
+|-------------|-------------|
+| ```>```     | Move the data pointer to the right. |
+| ```<```     | Move the data pointer to the left. |
+| ```+```     | Increment the byte at the data pointer by one. |
+| ```-```     | Decrement the byte at the data pointer by one. |
+| ```.```     | Output the byte at the data pointer. |
+| ```,```     | Take an input byte and store its value in the byte at the data pointer. |
+| ```[```     | Essentially a ```while``` loop. If the byte at the data pointer is zero, then instead of moving the instruction pointer forward to the next command, jump it forward to the command after the matching ```]``` command. |
+| ```]```     | If the byte at the data pointer is not zero, then instead of moving the instruction pointer forward to the next command, jump it back to the command after the matching ```[``` command. |
+
+### Language Extensions
+I've also taken the liberty to extend the language slightly and add an ```if``` conditional. You don't have to use this but it may help when writing more complex programs in Brainf-ck.
+
+**The commands for this are as follows:**
+| Instruction | Description |
+|-------------|-------------|
+| ```{```     | If the byte at the data pointer is zero, then instead of moving the instruction pointer forward to the next command, jump it forward to the command after the matching ```}``` command. If the data *is not* zero however, then execute the code contained in the ```{```, ```}``` just once before jumping the instruction pointer forward to the next command after the closing ```}``` command. |
+| ```}```     | This command marks the end of the contained ```if``` conditional code.
+
 
 *Please note: I'm still firming up these docs and the package itself.*
 
 **_Still to complete:_**
-- Language extensions
 - Project use cases
 - Project roadmap
 - Contributing
