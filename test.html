@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+    <head>
+        <meta charset="utf-8">
+        <title></title>
+    </head>
+    <body>
+
+        <h1 id='test'></h1>
+
+
+        <script src="./brainf-ck.min.js"></script>
+
+        <script>
+            const brainfuck = new Brainfuck({
+                source: ',++++++++[>++++[>++>+++>+++>+<<<<-]>+>+>->>+[<]<-]>>.>---.+++++++..+++.>>.<-.<.+++.------.--------.>>+.>++.',
+                output: 'test'
+            });
+        </script>
+    </body>
+</html>

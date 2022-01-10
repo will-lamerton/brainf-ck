@@ -48,18 +48,6 @@ class Brainfuck {
      */
     checkOptions()
     {
-        // We must have { `viaNode`: true|fase | passed as an option to tell
-        // the interpreter whether to run from the command line or via the API.
-        if (this.options.viaNode === undefined || typeof this.options.viaNode != 'boolean') {
-            throw 'Expected running environment in options object not found or wrong type.\n\nAdd `viaNode`. { viaNode: true|false }';
-        }
-
-        // If `viaNode` == true, return as the program class should fetch the
-        // source from the command line.
-        if (this.options.viaNode) {
-            return;
-        }
-
         // If we're not running via Node, we'll require a `source` passed as a
         // string...
         if (this.options.source === undefined || typeof this.options.source != 'string') {
