@@ -95,17 +95,18 @@ Some features that would be great to work on at some point:
     - Functions
     - Variables
 
+
 ## Contributing
 Feel free to contribute! Just submit a pull request and I'll review it.
 
 ## Credits
 This library was built by Will Lamerton. Feel free to check out my social places:
 
-Website: https://willlamerton.me
-Instagram: https://instagram.com/willlamerton
-Twitter: https://twitter.com/@WillLamerton
-LinkedIn: https://www.linkedin.com/in/will-lamerton-b16ab915b
-Quora: https://www.quora.com/profile/Will-Lamerton
+- Website: https://willlamerton.me
+- Instagram: https://instagram.com/willlamerton
+- Twitter: https://twitter.com/@WillLamerton
+- LinkedIn: https://www.linkedin.com/in/will-lamerton-b16ab915b
+- Quora: https://www.quora.com/profile/Will-Lamerton
 
-Barr Media (my company): https://barr.media
-Truffle (my website builder): https://truffle.page
+- Barr Media (my company): https://barr.media
+- Truffle (my website builder): https://truffle.page
