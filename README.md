@@ -95,11 +95,6 @@ Some features that would be great to work on at some point:
     - Functions
     - Variables
 
-
-
-##Contributing
-Feel free to contribute! Just submit a pull request and I'll review it.
-
 ## Credits
 This library was built by Will Lamerton. Feel free to check out my social places:
 
