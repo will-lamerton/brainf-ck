@@ -96,7 +96,8 @@ Some features that would be great to work on at some point:
     - Variables
 
 
-## Contributing
+
+##Contributing
 Feel free to contribute! Just submit a pull request and I'll review it.
 
 ## Credits
