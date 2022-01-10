@@ -1,8 +1,10 @@
+import {Memory} from './lang/memory.js';
+
 /**
  * Class to interpret the passed Brainfuck source file.
  * @return {void}
  */
-class Interpreter {
+export class Interpreter {
     /**
      * Constructor.
      * @param {object} ast - Abstract Syntax Tree to run.
@@ -20,7 +22,6 @@ class Interpreter {
          * memory allocated to Brainfuck.
          *
          */
-        const Memory = require('./lang/memory');
         this.memory = new Memory;
 
         this.output = output;
@@ -141,5 +142,3 @@ class Interpreter {
         return;
     }
 }
-
-module.exports = Interpreter;

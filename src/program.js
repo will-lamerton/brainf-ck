@@ -1,14 +1,16 @@
+import {Lexer} from './lexer.js';
+import {Parser} from './parser.js';
+
 /**
  * Program class. Contains functions to fetch and manage Brainfuck programs.
  */
-class Program {
+export class Program {
     /**
      * Constructor.
      * @return {void}
      */
     constructor(source)
     {
-        const Lexer = require('./lexer');
         /**
          * Call the lexer.
          * @type {Lexer}
@@ -16,7 +18,6 @@ class Program {
          */
         this.lexer = new Lexer(source);
 
-        const Parser = require('./parser');
         /**
          * Call the parser.
          * @type {Parser}
@@ -27,5 +28,3 @@ class Program {
         this.ast = this.parser.ast;
     }
 }
-
-module.exports = Program;

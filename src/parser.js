@@ -2,7 +2,7 @@
  * Parser class – this takes our tokens that are recognised and
  * "makes sense of them" by parsing them into an Abstract Syntax Tree.
  */
-class Parser {
+export class Parser {
     /**
      * Constructor
      * @return {void}
@@ -101,5 +101,3 @@ class Parser {
         return JSON.parse(astString)[0].commands;
     }
 }
-
-module.exports = Parser;

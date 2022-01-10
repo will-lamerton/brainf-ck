@@ -1,14 +1,15 @@
 /**
  * Class to handle Brainfuck memory functions.
  */
-class Memory {
+import {Input} from './input.js';
+
+export class Memory {
     /**
      * Constructor to create instance of memory.
      * @return {void}
      */
     constructor()
     {
-        const Input = require('./input');
         this.input = new Input;
 
         this.stack = Array.from(Array(10).keys()).fill(0);
@@ -105,5 +106,3 @@ class Memory {
         console.log(this.stack);
     }
 }
-
-module.exports = Memory;

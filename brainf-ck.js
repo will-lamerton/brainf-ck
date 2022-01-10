@@ -1,8 +1,12 @@
+import {Output} from './src/lang/output.js';
+import {Program} from './src/program.js';
+import {Interpreter} from './src/interpreter.js';
+
 /**
  * Small initialiser class - takes the source and lexes, parses it and then
  * passes it to the interpreter in the form of an AST.
  */
-class Brainfuck {
+export class Brainfuck {
     /**
      * Constructor
      * @param {object} options - options for the interpreter.
@@ -11,7 +15,6 @@ class Brainfuck {
     constructor(options)
     {
         // Init the output class.
-        const Output =  require('./src/lang/output');
         const output = new Output;
 
         // Options...
@@ -26,11 +29,9 @@ class Brainfuck {
             this.checkOptions();
 
             // Lex & parse the program source.
-            const Program = require('./src/program');
             this.program = new Program(this.source);
 
             // Interpret the AST created in the program class.
-            const Interpreter = require('./src/interpreter');
             new Interpreter(this.program.ast, output);
 
             // Once we're done executing instructions, we'll take the output stack and
@@ -61,5 +62,3 @@ class Brainfuck {
         return;
     }
 }
-
-module.exports = Brainfuck;

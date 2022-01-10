@@ -2,7 +2,7 @@
  * Lexer class - rudimentary, prepares the source into a series of tokens to
  * be parsed.
  */
-class Lexer {
+export class Lexer {
     /**
      * Constructor.
      * @param {string} rawSource - this is the source file contents as a string.
@@ -59,5 +59,3 @@ class Lexer {
         return lexedSource;
     }
 }
-
-module.exports = Lexer;

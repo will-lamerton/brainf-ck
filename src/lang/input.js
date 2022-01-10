@@ -1,7 +1,7 @@
 /**
  * Class to read input...
  */
-class Input {
+export class Input {
     /**
      * Method to take a user input and return it to the interpreter.
      * @return {string}
@@ -16,5 +16,3 @@ class Input {
         return (!isNaN(input.charCodeAt(0))) ? input.charCodeAt(0) : 0;
     }
 }
-
-module.exports = Input;

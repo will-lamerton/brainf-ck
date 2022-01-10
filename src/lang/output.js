@@ -1,7 +1,7 @@
 /**
  * Output class. Module contains functions to handle interpreter output.
  */
-class Output {
+export class Output {
     /**
      * Constructor
      * @return {void}
@@ -44,5 +44,3 @@ class Output {
         ;
     }
 }
-
-module.exports = Output;
