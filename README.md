@@ -39,7 +39,7 @@ Again, the interpreter class takes an object as a parameter to define how the li
 | Parameter | Type | Required | Explanation                                                      |
 |-----------|------------|----------|------------------------------------------------------------------|
 | ```source```    | String | Yes    | A Brainf-ck program to interpret. |
-| ```output```    | String | No     | If you want to output the program straight to a HTML DOM element, you can pass it's ID here. |
+| ```output```    | String | No     | If you want to output the program straight to a HTML DOM element, you can pass it's ID here. If you don't specify this, the interpreter will output the result to the console. |
 
 
 ## The Language
@@ -67,15 +67,45 @@ I've also taken the liberty to extend the language slightly and add an ```if``` 
 | Instruction | Description |
 |-------------|-------------|
 | ```{```     | If the byte at the data pointer is zero, then instead of moving the instruction pointer forward to the next command, jump it forward to the command after the matching ```}``` command. If the data *is not* zero however, then execute the code contained in the ```{```, ```}``` just once before jumping the instruction pointer forward to the next command after the closing ```}``` command. |
-| ```}```     | This command marks the end of the contained ```if``` conditional code.
+| ```}```     | This command marks the end of the contained ```if``` conditional code. |
+| ```~```     | A debugging command, this dumps the memory as it currently is to the console. |
 
+## Project Use Cases
+I get it, a Brainf-ck interpreter is not the most obviously useful package and to be totally honest, there's not much argument against that. The truth is, I built this for fun, as a weekend challenge and I just thought, why not write up some docs, upload it to NPM and GitHub and then I can call myself a *contributor to the world of open source*. 😎
 
-*Please note: I'm still firming up these docs and the package itself.*
+However, as a learning resource or something to build into your own weekend project, this could be a great place to start.
 
-**_Still to complete:_**
-- Project use cases
-- Project roadmap
-- Contributing
+The cool thing about Brainf-ck as a language is that it's super basic in terms of syntax and therefore, you can create an interpreter or compiler for it very very simply. In fact the first version of this interpreter was less than 100 lines long and consisted of nothing more than a couple of variables, a while loop and a switch statement.
 
-**_Still to complete in package:_**
-- Dictionary so you can choose the keywords for the language.
+However, I've overcomplicated the process and included both a lexer and parser for the source that after both running, generate an *abstract syntax tree* for the interpreter to navigate and run. This is over the top for such a simple language but, in interpreting a Brainf-ck source string this way you get to track and see how real program languages actually work, all be it in its most rudimentary form. Moreover, I've tried to comment and document the source code as well as possible so that one looking can learn and digest exactly what's happening.
+
+Other use cases are to build and experiment more easily with an interpreter. You can import this library and play around with Brainf-ck in your own projects and applications very simply with everything here giving you the bare skeleton to get started.
+
+## Roadmap
+Look, this is by far not a project I am actively looking to maintain for any particular reason other than for fun so, no promises. I'll strive to fix bugs but adding features will only be as and when I have time.
+
+Some features that would be great to work on at some point:
+
+- A compiler/transpiler to optionally transpile the Brainf-ck source code to JavaScript (or something).
+- Optional input parameter so that you can specify where the library takes it's input stream from.
+- More example programs.
+- Optional dictionary so that you can specify your own syntax.
+- Web interface application for learning.
+- Language extensions:
+    - Functions
+    - Variables
+
+## Contributing
+Feel free to contribute! Just submit a pull request and I'll review it.
+
+## Credits
+This library was built by Will Lamerton. Feel free to check out my social places:
+
+Website: https://willlamerton.me
+Instagram: https://instagram.com/willlamerton
+Twitter: https://twitter.com/@WillLamerton
+LinkedIn: https://www.linkedin.com/in/will-lamerton-b16ab915b
+Quora: https://www.quora.com/profile/Will-Lamerton
+
+Barr Media (my company): https://barr.media
+Truffle (my website builder): https://truffle.page
